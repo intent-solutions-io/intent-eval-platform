@@ -25,13 +25,23 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 MANIFEST = os.path.join(HERE, "..", "ecosystem.json")
 
 
+# Some registries/APIs (notably api.github.com) reject the default Python
+# urllib User-Agent. Send a descriptive UA on every request, centrally.
+_UA = "ecosystem-drift (+https://github.com/intent-solutions-io/intent-eval-platform)"
+
+
 def _get_json(url, headers=None, timeout=15):
-    req = urllib.request.Request(url, headers=headers or {})
+    hdrs = {"User-Agent": _UA}
+    if headers:
+        hdrs.update(headers)
+    req = urllib.request.Request(url, headers=hdrs)
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return json.load(r)
 
 
 def npm_latest(pkg):
+    if not pkg:
+        return None
     try:
         return _get_json(f"https://registry.npmjs.org/{pkg}/latest").get("version")
     except (urllib.error.URLError, ValueError, TimeoutError):
@@ -39,7 +49,9 @@ def npm_latest(pkg):
 
 
 def newest_tag(gh):
-    headers = {"Accept": "application/vnd.github+json", "User-Agent": "ecosystem-drift"}
+    if not gh:
+        return None
+    headers = {"Accept": "application/vnd.github+json"}  # UA centralized in _get_json
     token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
     if token:
         headers["Authorization"] = f"Bearer {token}"
@@ -57,9 +69,9 @@ def _norm(v):
 def resolve(repo):
     src = repo.get("version_source")
     if src == "npm":
-        return npm_latest(repo["package"])
+        return npm_latest(repo.get("package"))
     if src == "git-tag":
-        return newest_tag(repo["gh"])
+        return newest_tag(repo.get("gh"))
     return None
 
 
@@ -87,7 +99,7 @@ def main():
         st = status_for(repo.get("pinned_version"), latest)
         if st == "BEHIND":
             behind += 1
-        rows.append((repo["name"], repo.get("version_source", "—"),
+        rows.append((repo.get("name", "unknown"), repo.get("version_source", "—"),
                      str(repo.get("pinned_version")), str(latest), st))
 
     lines = []
@@ -105,7 +117,7 @@ def main():
         lines.append("")
         lines.append("## Excluded from automation (skipped by design)")
         for ex in excluded:
-            lines.append(f"- **{ex['name']}** — {ex.get('reason', 'excluded')}")
+            lines.append(f"- **{ex.get('name', 'unknown')}** — {ex.get('reason', 'excluded')}")
     lines.append("")
     lines.append("_Advisory only. This report opens no PRs and mutates nothing. "
                  "To act on drift, re-verify upstream and bump `pinned_version` in "
