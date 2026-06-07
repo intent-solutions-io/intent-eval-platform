@@ -107,4 +107,28 @@ You don't have to trust any of it — that's the point. Verify it yourself.
 
 ---
 
+## Ecosystem manifest + drift report (report-only)
+
+[`ecosystem.json`](./ecosystem.json) is the machine-readable map of the six platform
+repos — each repo's kind, its release channel (npm or git tag), and the **pinned
+version** the platform considers current. [`scripts/ecosystem-drift.py`](./scripts/ecosystem-drift.py)
+reads the manifest and reports which repos have drifted behind their live upstream. The
+[`ecosystem-drift`](./.github/workflows/ecosystem-drift.yml) workflow runs it weekly and
+on manifest changes, writing the report to the run summary.
+
+**This is a report-only safe slice.** The checker has read-only permissions, opens no
+PRs, and mutates nothing — it always exits 0 (drift is advisory). Acting on drift means
+re-verifying upstream and bumping `pinned_version` in `ecosystem.json` via a reviewed PR.
+
+`claude-code-plugins` is deliberately listed under `excluded`, not automated: it has
+bespoke in-flight CI/CD, so any future sync automation must be coordinated with that
+pipeline first and sequenced last. Turning on auto-PR (and folding in the excluded repo)
+is a separate, explicitly-reviewed change — not a config flip.
+
+```bash
+python3 scripts/ecosystem-drift.py   # prints the drift table; opens nothing
+```
+
+---
+
 <sub>Intent Solutions · [intentsolutions.io](https://intentsolutions.io) · Apache-2.0</sub>

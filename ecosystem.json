@@ -1,0 +1,72 @@
+{
+  "manifest_version": "0.1.0",
+  "description": "Intent Eval Platform ecosystem manifest. Single source of truth for the report-only drift orchestrator (scripts/ecosystem-drift.py): which repos compose the platform, each repo's kind, and the pinned version the orchestrator compares against live upstream. SAFE SLICE — report-only: the orchestrator NEVER opens PRs in this version. Live auto-PR and inclusion of claude-code-plugins are deferred pending coordination (see the 'excluded' block and README).",
+  "generated": "2026-06-06",
+  "automation": {
+    "mode": "report-only",
+    "auto_pr": false,
+    "note": "Auto-PR is intentionally disabled. Turning it on is a separate, explicitly-reviewed change — not a config flip in this PR."
+  },
+  "repos": [
+    {
+      "name": "intent-eval-core",
+      "gh": "jeremylongshore/intent-eval-core",
+      "kind": "node-package",
+      "version_source": "npm",
+      "package": "@intentsolutions/core",
+      "pinned_version": "0.2.0",
+      "automation": "report-only"
+    },
+    {
+      "name": "intent-eval-lab",
+      "gh": "jeremylongshore/intent-eval-lab",
+      "kind": "docs-methodology",
+      "version_source": "git-tag",
+      "pinned_version": "v0.2.0",
+      "automation": "report-only"
+    },
+    {
+      "name": "intent-audit-harness",
+      "gh": "jeremylongshore/intent-audit-harness",
+      "kind": "polyglot-cli",
+      "version_source": "npm",
+      "package": "@intentsolutions/audit-harness",
+      "pinned_version": "1.1.5",
+      "automation": "report-only"
+    },
+    {
+      "name": "j-rig-skill-binary-eval",
+      "gh": "jeremylongshore/j-rig-skill-binary-eval",
+      "kind": "node-monorepo",
+      "version_source": "git-tag",
+      "pinned_version": "v1.1.0",
+      "automation": "report-only"
+    },
+    {
+      "name": "intent-rollout-gate",
+      "gh": "jeremylongshore/intent-rollout-gate",
+      "kind": "github-action",
+      "version_source": "git-tag",
+      "pinned_version": "v0.0.1",
+      "automation": "report-only"
+    },
+    {
+      "name": "intent-eval-dashboard",
+      "gh": "jeremylongshore/intent-eval-dashboard",
+      "kind": "web-dashboard",
+      "version_source": "git-tag",
+      "pinned_version": null,
+      "automation": "report-only",
+      "note": "No release tag yet; orchestrator reports 'untagged' rather than drift."
+    }
+  ],
+  "excluded": [
+    {
+      "name": "claude-code-plugins",
+      "gh": "jeremylongshore/claude-code-plugins",
+      "kind": "marketplace",
+      "automation": "EXCLUDED",
+      "reason": "Has bespoke in-flight CI/CD that tests plugins. Any sync automation must be studied and coordinated with that pipeline FIRST — never bolt generic automation on top of it. When ecosystem-sync gains write authority, claude-code-plugins is sequenced LAST and only after explicit coordination. The orchestrator must skip this entry entirely."
+    }
+  ]
+}
