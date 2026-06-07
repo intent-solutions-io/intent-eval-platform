@@ -1,0 +1,36 @@
+name: Ecosystem drift (report-only)
+
+# SAFE SLICE: this workflow only REPORTS drift. It has read-only permissions and
+# opens no PRs. Granting write/PR authority is a separate, explicitly-reviewed change.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Mondays 06:00 UTC — weekly drift report
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "ecosystem.json"
+      - "scripts/ecosystem-drift.py"
+      - ".github/workflows/ecosystem-drift.yml"
+
+permissions:
+  contents: read # read-only by design — no PR/commit authority
+
+concurrency:
+  group: ecosystem-drift-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  drift:
+    name: Report ecosystem version drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run report-only drift checker
+        env:
+          GITHUB_TOKEN: ${{ github.token }} # for GitHub API rate limits on tag lookups (read-only)
+        run: python3 scripts/ecosystem-drift.py
