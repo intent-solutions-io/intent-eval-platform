@@ -1,0 +1,6 @@
+# SOPS — encrypted *.sops.yaml files ARE committed (safe); plaintext is never committed.
+secrets.*.yaml
+!*.sops.yaml
+!secrets.example.yaml
+# decrypted scratch
+*.dec
