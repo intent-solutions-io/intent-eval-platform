@@ -107,6 +107,25 @@ You don't have to trust any of it — that's the point. Verify it yourself.
 
 ---
 
+## Changelog — what shipped where
+
+[`CHANGELOG.md`](./CHANGELOG.md) is the platform-wide "what shipped where" front door: a
+single date-ordered index of every release across the six repos. Each repo also keeps its
+own **detailed** [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) — the umbrella file
+links straight to them for the categorized per-release notes.
+
+It's **auto-generated** from each repo's GitHub Releases by
+[`scripts/aggregate-changelog.mjs`](./scripts/aggregate-changelog.mjs) via the
+[`aggregate-changelog`](./.github/workflows/aggregate-changelog.yml) workflow — daily, on
+`workflow_dispatch`, and on a `release-published` repository dispatch — so it never rots the way
+a hand-maintained aggregate would. The repo set comes from [`ecosystem.json`](./ecosystem.json);
+`claude-code-plugins` is intentionally excluded (it manages its own changelog).
+
+**Staying up to date:** read [`CHANGELOG.md`](./CHANGELOG.md), or **Watch ▸ Custom ▸ Releases**
+on any individual repo for push notifications.
+
+---
+
 ## Ecosystem manifest + drift report (report-only)
 
 [`ecosystem.json`](./ecosystem.json) is the machine-readable map of the six platform
