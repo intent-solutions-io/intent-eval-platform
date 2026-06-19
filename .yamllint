@@ -1,0 +1,34 @@
+# yamllint config for the Intent Eval Platform umbrella repo.
+#
+# The umbrella carries no package.json and no .audit-harness/ — its YAML surface
+# is just the GitHub Actions workflows + ecosystem manifest. Referenced directly
+# by .github/workflows/lint.yml (root-level .yamllint, not a vendored copy).
+#
+# Rationale for the relaxed rules below: GitHub Actions workflows routinely use
+# long `run:` one-liners and `on:`/`true` keys that the stock default profile
+# flags. We keep the structural checks (indentation, key duplication, trailing
+# whitespace, syntax) strict and relax only the cosmetic ones that conflict
+# with hand-authored Actions YAML.
+
+extends: default
+
+rules:
+  # GitHub Actions `run:` steps run long; line-length as a hard error produces
+  # churn without catching real defects.
+  line-length: disable
+
+  # `on:` is the canonical Actions trigger key; the truthy check would flag it.
+  truthy:
+    allowed-values: ['true', 'false']
+    check-keys: false
+
+  # `---` document-start marker is optional for single-document workflow files.
+  document-start: disable
+
+  # Comments are hand-authored; don't require exactly two leading spaces.
+  comments:
+    min-spaces-from-content: 1
+
+  # Keep these STRICT — they catch real defects:
+  #   indentation, key-duplicates, trailing-spaces, new-line-at-end-of-file,
+  #   colons, commas, brackets, braces (inherited from `extends: default`).

@@ -1,0 +1,71 @@
+name: Lint (YAML + Actions)
+
+# Deterministic L1 lint for the umbrella's CI-config surface: yamllint + actionlint.
+# The umbrella carries no package.json, so there is no ESLint/Prettier lane here —
+# its lint surface is the GitHub Actions workflows + the ecosystem manifest.
+# These two jobs are REQUIRED, not advisory: a green required check is signal, a
+# red advisory check is noise. yamllint runs --strict so warnings fail the gate.
+#
+# Config: repo-root .yamllint (the umbrella has no .audit-harness/ vendor dir, so
+# the policy lives at the root); actionlint uses its built-in rule set.
+
+on:
+  pull_request:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '.yamllint'
+      - '.github/workflows/lint.yml'
+  push:
+    branches: [main]
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  yamllint:
+    name: yamllint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install yamllint
+        run: pip install --no-cache-dir "yamllint==1.35.1"
+
+      - name: Run yamllint (--strict — warnings fail the gate)
+        run: |
+          yamllint --strict \
+            --config-file .yamllint \
+            .github/ ecosystem.json
+
+  actionlint:
+    name: actionlint
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Run actionlint directly (not via the reviewdog wrapper): the binary's own
+      # non-zero exit on any error IS the gate, so the check-run settles to a
+      # terminal completed/failure status. The reviewdog github-pr-check reporter
+      # leaves a zero-findings run stuck at status=in_progress (conclusion=success
+      # but never "completed"), which reads as a permanently-pending required check.
+      - name: Run actionlint
+        run: |
+          bash <(curl -sSfL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+          ./actionlint -color

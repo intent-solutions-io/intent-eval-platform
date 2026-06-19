@@ -1,0 +1,17 @@
+// markdownlint-cli2 config for the Intent Eval Platform umbrella repo.
+//
+// Umbrella is a map repo — README + aggregated CHANGELOG. Tables, badges, and
+// long cross-reference lines are common. Tune rules to match.
+{
+  "config": {
+    "default": true,
+    "MD013": false, // line-length — README/changelog use long lines for links + tables
+    "MD024": { "siblings_only": true }, // allow duplicate headings in different sections
+    "MD033": false, // inline HTML allowed (badges, <p>, <sub>, <br>)
+    "MD041": false, // first line need not be H1 (badge banner or blockquote first)
+    "MD007": { "indent": 2 }, // unordered list indent
+    "MD026": { "punctuation": ".,;:!?" }, // trailing punctuation in headings — allow ?
+  },
+  "globs": ["**/*.md"],
+  "ignores": ["node_modules/**", "dist/**"],
+}

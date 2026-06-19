@@ -1,0 +1,48 @@
+# typos (crate-ci/typos) configuration for the Intent Eval Platform umbrella.
+#
+# Required spell-check lane (.github/workflows/typos.yml). This file holds the
+# Intent Eval Platform (IEP) domain vocabulary that typos must NOT flag as
+# misspellings — repo/family prefixes, tooling names, and crypto/supply-chain
+# terms that are correct-as-written. Add new legitimate terms here rather than
+# rewording prose to satisfy the checker.
+
+[files]
+# Vendored / lockfile surfaces are not authored prose — exclude them.
+extend-exclude = [
+  "node_modules/",
+  "dist/",
+  ".beads/",
+  "*.lock",
+  "pnpm-lock.yaml",
+]
+
+[default.extend-words]
+# IEP repo + bead-prefix family. These are deliberate identifiers, not typos.
+iep = "iep"
+iec = "iec"
+iel = "iel"
+iah = "iah"
+iar = "iar"
+iaj = "iaj"
+isedc = "isedc"
+
+# Supply-chain / crypto / tooling vocabulary.
+sops = "sops"
+sigstore = "sigstore"
+rekor = "rekor"
+zod = "zod"
+otel = "otel"
+ot = "ot"
+
+# Org / executive-council seat abbreviations used in platform docs.
+cmo = "cmo"
+
+# Common engineering abbreviations typos sometimes over-corrects.
+deps = "deps"
+crate = "crate"
+structs = "structs"
+ser = "ser"
+
+# Domain words that look like misspellings but are correct-as-written in IEP
+# prose ("an unparseable bead title", etc.).
+unparseable = "unparseable"

@@ -4,3 +4,5 @@ secrets.*.yaml
 !secrets.example.yaml
 # decrypted scratch
 *.dec
+# lychee link-check cache (offline mode writes none, but guard the dotfile anyway)
+.lycheecache
