@@ -10,17 +10,12 @@ name: Lint (YAML + Actions)
 # the policy lives at the root); actionlint uses its built-in rule set.
 
 on:
+  # No path filter: these are branch-protection-REQUIRED checks, so they must run
+  # and report on every PR (a skipped required check blocks the PR forever).
   pull_request:
-    paths:
-      - '**/*.yml'
-      - '**/*.yaml'
-      - '.yamllint'
-      - '.github/workflows/lint.yml'
+    branches: [main]
   push:
     branches: [main]
-    paths:
-      - '**/*.yml'
-      - '**/*.yaml'
 
 permissions:
   contents: read
