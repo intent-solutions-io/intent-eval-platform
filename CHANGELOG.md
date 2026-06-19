@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-06-19
+
+- **intent-eval-core [v0.8.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.8.0)** — docs: rebuild detailed Keep-a-Changelog CHANGELOG.md
+
 ### 2026-06-16
 
 - **intent-audit-harness [v1.2.1](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.2.1)**
