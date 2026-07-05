@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-07-05
+
+- **intent-audit-harness [v1.3.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.3.0)**
+
 ### 2026-06-26
 
 - **intent-eval-core [v0.9.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.9.0)** — v0.9.0 — UsageEvent + HumanReview (canonical set 14->16)
