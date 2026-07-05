@@ -39,6 +39,7 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 ### 2026-07-05
 
 - **intent-audit-harness [v1.3.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.3.0)**
+- **intent-rollout-gate [v0.3.1](https://github.com/jeremylongshore/intent-rollout-gate/releases/tag/v0.3.1)** — test(iar-E10): real internal dogfood — published Action vs kernel-valid Evidence Bundle
 
 ### 2026-06-26
 
