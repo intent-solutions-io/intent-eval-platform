@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-07-09
+
+- **intent-eval-core [v0.10.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.10.0)** — docs(readme): fix status version drift v0.8.0 -> v0.9.0
+
 ### 2026-07-08
 
 - **intent-rollout-gate [v0.3.2](https://github.com/jeremylongshore/intent-rollout-gate/releases/tag/v0.3.2)** — feat: emit signed gate-result evidence for the dashboard on tag release
