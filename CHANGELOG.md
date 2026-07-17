@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-07-17
+
+- **j-rig-skill-binary-eval [evidence-latest](https://github.com/jeremylongshore/j-rig-skill-binary-eval/releases/tag/evidence-latest)** — Nightly skill-eval evidence (rolling)
+
 ### 2026-07-09
 
 - **intent-eval-core [v0.10.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.10.0)** — docs(readme): fix status version drift v0.8.0 -> v0.9.0
