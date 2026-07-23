@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-07-23
+
+- **intent-audit-harness [v1.3.1](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.3.1)**
+
 ### 2026-07-17
 
 - **j-rig-skill-binary-eval [evidence-latest](https://github.com/jeremylongshore/j-rig-skill-binary-eval/releases/tag/evidence-latest)** — Nightly skill-eval evidence (rolling)
