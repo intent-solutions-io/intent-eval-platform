@@ -8,6 +8,7 @@
   <a href="https://labs.intentsolutions.io/"><img src="https://img.shields.io/badge/live-labs.intentsolutions.io-2c5282" alt="live dashboard"></a>
   <a href="https://www.npmjs.com/package/@intentsolutions/core"><img src="https://img.shields.io/npm/v/@intentsolutions/core?label=%40intentsolutions%2Fcore" alt="core on npm"></a>
   <a href="https://www.npmjs.com/package/@intentsolutions/audit-harness"><img src="https://img.shields.io/npm/v/@intentsolutions/audit-harness?label=%40intentsolutions%2Faudit-harness" alt="audit-harness on npm"></a>
+<a href="https://ko-fi.com/U5S225PTME"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi"></a>
   <img src="https://img.shields.io/badge/license-Apache--2.0-blue" alt="Apache-2.0">
 </p>
 
