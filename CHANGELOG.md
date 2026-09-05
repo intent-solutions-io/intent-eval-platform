@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-09-05
+
+- **intent-audit-harness [v1.4.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.4.0)**
+
 ### 2026-07-23
 
 - **intent-audit-harness [v1.3.1](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.3.1)**
