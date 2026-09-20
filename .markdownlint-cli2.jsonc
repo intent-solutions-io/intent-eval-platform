@@ -11,6 +11,7 @@
     "MD041": false, // first line need not be H1 (badge banner or blockquote first)
     "MD007": { "indent": 2 }, // unordered list indent
     "MD026": { "punctuation": ".,;:!?" }, // trailing punctuation in headings — allow ?
+    "MD060": false, // table-column-style, added by markdownlint 0.40 (action v23); fights Prettier tables, off estate-wide
   },
   "globs": ["**/*.md"],
   "ignores": ["node_modules/**", "dist/**"],
