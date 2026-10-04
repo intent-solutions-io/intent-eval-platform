@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-10-04
+
+- **intent-eval-core [v0.11.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.11.0)** — docs(phase4): add SUPPORT + issue/PR templates (repo-dress drift)
+
 ### 2026-09-05
 
 - **intent-audit-harness [v1.4.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.4.0)**
