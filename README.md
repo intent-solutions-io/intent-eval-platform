@@ -110,9 +110,22 @@ You don't have to trust any of it — that's the point. Verify it yourself.
 
 ## Working on the platform with Claude Code
 
-Clone this umbrella, then clone the six repos inside it (the paths match the
-directory names above; each keeps its own git, license and CI). Claude Code
-then picks up five project agents from [`.claude/agents/`](.claude/agents/).
+Clone this umbrella, then clone the six repos inside it. Each keeps its own
+git, license and CI. Two use shorter directory names, and the agents expect
+these exact paths:
+
+```bash
+git clone https://github.com/intent-solutions-io/intent-eval-platform.git
+cd intent-eval-platform
+for r in intent-eval-core intent-eval-lab intent-rollout-gate intent-eval-dashboard; do
+  git clone "https://github.com/jeremylongshore/$r.git"
+done
+git clone https://github.com/jeremylongshore/intent-audit-harness.git audit-harness
+git clone https://github.com/jeremylongshore/j-rig-skill-binary-eval.git j-rig-binary-eval
+```
+
+Claude Code then picks up five project agents from
+[`.claude/agents/`](.claude/agents/).
 They encode the platform's invariants so a change is checked against them, not
 against memory:
 

@@ -16,6 +16,9 @@ secrets.*.yaml
 /intent-eval-lab/
 /intent-rollout-gate/
 /j-rig-binary-eval/
+# Same repos under their GitHub names, if cloned without a target directory.
+/intent-audit-harness/
+/j-rig-skill-binary-eval/
 # Maintainer-local operating notes and tool permissions (internal pointers,
 # not platform documentation). Public docs live in README.md and each repo.
 /CLAUDE.md

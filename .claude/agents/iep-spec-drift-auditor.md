@@ -27,7 +27,7 @@ For every numeric or state claim, the authority is the artifact, never another p
 
 | Claim in prose | Ground truth to check against |
 |---|---|
-| "Published as `@intentsolutions/core@X`" | `intent-eval-core/package.json` `version` **and** `git -C intent-eval-core tag --sort=-creatordate` head **and** (when reachable) `npm view @intentsolutions/core version` |
+| "Published as `@intentsolutions/core@X`" | `intent-eval-core/package.json` `version` **and** `git -C intent-eval-core tag --sort=-creatordate` head **and** (when reachable) `npm view --registry=https://registry.npmjs.org @intentsolutions/core version` |
 | "the N canonical entities" | `intent-eval-core/src/entities/` count + the kernel CLAUDE.md's own entity enumeration (currently **16**: the 13 Blueprint-B + `SkillVersion` + `UsageEvent` + `HumanReview`) |
 | "consumes `@intentsolutions/core@^X`" | that repo's `package.json` dependency range (caret ranges legitimately satisfy a higher published minor — a `^0.9.0` dep against a 0.10.0 published kernel is NOT drift; a bare wrong number in a *narrative* sentence is) |
 | "j-rig-cli / refiner / rollout-gate at version X" | the owning repo's `package.json` (or `packages/cli/package.json`) + its release tags |
