@@ -6,3 +6,23 @@ secrets.*.yaml
 *.dec
 # lychee link-check cache (offline mode writes none, but guard the dotfile anyway)
 .lycheecache
+
+# ── Umbrella boundary ──────────────────────────────────────────────────────
+# The six platform repos are cloned INTO this directory but are independent
+# repositories with their own git, license and CI. Never track them here.
+/audit-harness/
+/intent-eval-core/
+/intent-eval-dashboard/
+/intent-eval-lab/
+/intent-rollout-gate/
+/j-rig-binary-eval/
+# Same repos under their GitHub names, if cloned without a target directory.
+/intent-audit-harness/
+/j-rig-skill-binary-eval/
+# Maintainer-local operating notes and tool permissions (internal pointers,
+# not platform documentation). Public docs live in README.md and each repo.
+/CLAUDE.md
+/AGENTS.md
+/README.local.md
+/.claude/settings.json
+/.claude/settings.local.json

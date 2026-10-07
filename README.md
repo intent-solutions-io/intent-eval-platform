@@ -108,6 +108,41 @@ You don't have to trust any of it — that's the point. Verify it yourself.
 
 ---
 
+## Working on the platform with Claude Code
+
+Clone this umbrella, then clone the six repos inside it. Each keeps its own
+git, license and CI. Two use shorter directory names, and the agents expect
+these exact paths:
+
+```bash
+git clone https://github.com/intent-solutions-io/intent-eval-platform.git
+cd intent-eval-platform
+for r in intent-eval-core intent-eval-lab intent-rollout-gate intent-eval-dashboard; do
+  git clone "https://github.com/jeremylongshore/$r.git"
+done
+git clone https://github.com/jeremylongshore/intent-audit-harness.git audit-harness
+git clone https://github.com/jeremylongshore/j-rig-skill-binary-eval.git j-rig-binary-eval
+```
+
+Claude Code then picks up five project agents from
+[`.claude/agents/`](.claude/agents/).
+They encode the platform's invariants so a change is checked against them, not
+against memory:
+
+| Agent | Use it when |
+|---|---|
+| [`iep-kernel-engineer`](.claude/agents/iep-kernel-engineer.md) | changing `@intentsolutions/core`: JSON Schemas, Zod validators, Pydantic models, fixtures |
+| [`iep-predicate-integrity-reviewer`](.claude/agents/iep-predicate-integrity-reviewer.md) | reviewing a kernel change: schema ↔ validator ↔ model drift, signed one-way-door shapes |
+| [`iep-provider-seam-engineer`](.claude/agents/iep-provider-seam-engineer.md) | adding or changing a model provider in J-Rig or the refiner |
+| [`iep-spec-drift-auditor`](.claude/agents/iep-spec-drift-auditor.md) | checking docs ↔ manifests ↔ tags for drift across the repos |
+| [`iep-dashboard-c3-reviewer`](.claude/agents/iep-dashboard-c3-reviewer.md) | changing the reports dashboard: no cross-predicate pass rates, fail-closed visibility |
+
+Each agent reads its running catch-list from
+[`.claude/agent-lessons/`](.claude/agent-lessons/) before it starts. When a
+review finds a new failure mode, add it there so the next run catches it.
+
+---
+
 ## Changelog — what shipped where
 
 [`CHANGELOG.md`](./CHANGELOG.md) is the platform-wide "what shipped where" front door: a
