@@ -36,6 +36,12 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-10-08
+
+- **intent-audit-harness [v1.5.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.5.0)** — > Not published to any registry. The v1.5.0 tag release run failed before `npm publish` (missing PyYAML in the release lane). Install 1.5.1, which ships this…
+- **intent-audit-harness [v1.5.1](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.5.1)** — Ships the 1.5.0 content to npm and crates.io. The `v1.5.0` tag and GitHub
+- **j-rig-skill-binary-eval [jrig-cli-v0.5.0](https://github.com/jeremylongshore/j-rig-skill-binary-eval/releases/tag/jrig-cli-v0.5.0)** — @intentsolutions/jrig-cli 0.5.0
+
 ### 2026-10-04
 
 - **intent-eval-core [v0.11.0](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.11.0)** — docs(phase4): add SUPPORT + issue/PR templates (repo-dress drift)
