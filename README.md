@@ -124,6 +124,26 @@ git clone https://github.com/jeremylongshore/intent-audit-harness.git audit-harn
 git clone https://github.com/jeremylongshore/j-rig-skill-binary-eval.git j-rig-binary-eval
 ```
 
+### Shared task tracking
+
+Platform tasks live in one shared Beads workspace. This checkout's
+`.beads/redirect` points to `../.beads`, relative to the repository root:
+
+```text
+workspace/
+├── .beads/                     # Existing shared Beads database
+└── intent-eval-platform/       # This checkout, with the six member repos inside
+```
+
+From this checkout, run `bd where` to verify the workspace, `bd prime` to load
+the workflow, and `bd ready` to find unblocked work. Claim a task with
+`bd update <id> --claim` before implementing it. For another checkout layout,
+set `BEADS_DIR` to your existing shared workspace. Do not initialize a second
+database inside this umbrella or its members. Database files and exports stay
+outside this repository's Git history.
+
+### Project agents
+
 Claude Code then picks up five project agents from
 [`.claude/agents/`](.claude/agents/).
 They encode the platform's invariants so a change is checked against them, not

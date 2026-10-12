@@ -1,0 +1,4 @@
+# This checkout redirects to a shared workspace; keep local runtime data private.
+*
+!.gitignore
+!redirect
