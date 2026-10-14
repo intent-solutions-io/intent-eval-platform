@@ -1,5 +1,11 @@
 # Intent Eval Platform
 
+<!-- intent-select-partner:start -->
+<p><a href="https://intentsolutions.io/"><img src="https://raw.githubusercontent.com/intent-solutions-io/.github/b82af5d3e7951d85e39ea9e65cc24ee8278722a7/assets/brand/claude-select-partner.svg" alt="Intent Solutions: Claude Partner Network Select Services Partner" width="300" height="95" /></a></p>
+
+Intent Solutions is a Claude Partner Network Select Services Partner.
+<!-- intent-select-partner:end -->
+
 > **Audit-first AI evaluation.** Six composable, agent-native, Apache-2.0 repos that let any engineering org *prove* — not just claim — that an AI change works, with a cryptographically signed receipt anyone can verify.
 >
 > *Measure the behavior. Sign the result. Gate the ship.*
