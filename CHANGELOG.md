@@ -38,6 +38,7 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 ### 2026-10-27
 
+- **intent-audit-harness [v2.0.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v2.0.0)**
 - **intent-eval-core [v0.11.1](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.11.1)** — docs: record @intentsolutions/core 0.11.0 as the published release
 - **j-rig-skill-binary-eval [jrig-cli-v0.5.1](https://github.com/jeremylongshore/j-rig-skill-binary-eval/releases/tag/jrig-cli-v0.5.1)** — @intentsolutions/jrig-cli 0.5.1
 
