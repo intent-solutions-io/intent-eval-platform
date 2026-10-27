@@ -36,6 +36,10 @@ Platform-level notes that span repos go here (hand-edited; survives regeneration
 
 <!-- AUTO:BEGIN -->
 
+### 2026-10-27
+
+- **intent-eval-core [v0.11.1](https://github.com/jeremylongshore/intent-eval-core/releases/tag/v0.11.1)** — docs: record @intentsolutions/core 0.11.0 as the published release
+
 ### 2026-10-08
 
 - **intent-audit-harness [v1.5.0](https://github.com/jeremylongshore/intent-audit-harness/releases/tag/v1.5.0)** — > Not published to any registry. The v1.5.0 tag release run failed before `npm publish` (missing PyYAML in the release lane). Install 1.5.1, which ships this…
